@@ -25,11 +25,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/tvPage"
             android:text="Page"/>
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Törlés"
-            android:id="@+id/deleteButton"/>
+
     </LinearLayout>
 
 </androidx.cardview.widget.CardView>

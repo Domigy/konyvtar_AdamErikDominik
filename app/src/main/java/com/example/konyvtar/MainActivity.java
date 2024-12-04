@@ -25,7 +25,6 @@ public class MainActivity extends AppCompatActivity {
     private EditText editTextAuthor;
     private EditText editTextPage;
     private Button addButton;
-    private Button deleteButton;
     private ListView listViewBook;
 
 
@@ -49,6 +48,11 @@ public class MainActivity extends AppCompatActivity {
             intent.putExtra("Page", bookList.get(position).getPage());
             startActivity(intent);
         });
+        listViewBook.setOnItemLongClickListener((parent, view, position, id) -> {
+            bookList.remove(position);
+            adapter.notifyDataSetChanged();
+            return true;
+        });
     }
     public void init(){
         adapter = new CustumeAdapter(this, bookList);
@@ -57,7 +61,6 @@ public class MainActivity extends AppCompatActivity {
         editTextPage = findViewById(R.id.editTextPage);
         addButton= findViewById(R.id.addButton);
         listViewBook = findViewById(R.id.listViewBook);
-        deleteButton = findViewById(R.id.deleteButton);
         listViewBook.setAdapter(adapter);
 
         addButton.setOnClickListener(view ->{
@@ -83,11 +86,8 @@ public class MainActivity extends AppCompatActivity {
 
         });
 
-        listViewBook.setOnItemLongClickListener((parent, view, position, id) -> {
-            bookList.remove(position);
-            adapter.notifyDataSetChanged();
-            return true;
-        });
+
+
 
 
 
